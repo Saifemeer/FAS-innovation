@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>FAS innovation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+      <script>
+   // Configure Tailwind to use custom colors
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#07e776',
+            darkbg: '#000000',
+            lightbg: '#ffffff',
+          },
+          fontFamily: {
+            sans: ['ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+    <style>
+       :root {
+            --primary: #07e776;
+            --dark: #0a0a0a;
+            --light: #f8f9fa;
+            --card-bg: #121212;
+            --text: #e2e2e2;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+           font-family: "Poppins", sans-serif;
+            background-color: #050505;
+            color: var(--text);
+         }
+      .text-custom-green {
+        color: #07e776;
+      }
+      .bg-custom-green {
+        background-color: #07e776;
+      }
+      .border-custom-green {
+        border-color: #07e776;
+      }
+      .hover\:bg-custom-green:hover {
+        background-color: #07e776;
+      }
+      .hover\:shadow-custom-green:hover {
+        box-shadow: 0 4px 14px 0 #07e776;
+      }
+      .fill-custom-green {
+        fill: #07e776;
+      }
+      .bg-upgraded {
+        filter: brightness(1.3) contrast(1.2);
+        transition: filter 0.3s ease;
+      }
+
+      /* Services Cards Section Styling */
+      .icon-bg-1,
+      .icon-bg-3 {
+        background: linear-gradient(135deg, #07e776, #000000);
+        box-shadow: 0 0 15px #07e776;
+      }
+      .icon-bg-2 {
+        background: linear-gradient(135deg, #000000, #07e776);
+        box-shadow: 0 0 15px #07e776;
+      }
+      .btn-glow {
+        box-shadow: 0 0 15px #07e776;
+      }
+      .card-shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 1.5rem;
+        filter: blur(30px);
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: -1;
+      }
+      .card-container {
+        position: relative;
+        background-color: #000000;
+        color: white;
+      }
+      .shadow-1,
+      .shadow-3 {
+        background: linear-gradient(135deg, #07e776, #000000);
+        box-shadow: 0 0 40px 20px #07e776;
+      }
+      .shadow-2 {
+        background: linear-gradient(135deg, #000000, #07e776);
+        box-shadow: 0 0 40px 20px #07e776;
+      }
+      .card-container.active .card-shadow {
+        opacity: 0.5;
+      }
+ /* Custom star color */
+    .star-accent {
+      color: #07e776;
+    }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+     .card {
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow:
+        0 0 8px #07e776,
+        0 0 20px #07e776,
+        0 0 30px #07e776,
+        0 0 40px #07e776;
+    }
+    .icon-glow {
+      transition: filter 0.3s ease;
+    }
+    .card:hover .icon-glow {
+      filter: drop-shadow(0 0 6px #07e776);
+    }
+      .bg-unique {
+    position: relative;
+    background: black;
+    overflow: hidden;
+  }
+  .bg-unique::before,
+  .bg-unique::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    filter: blur(80px);
+    z-index: 0;
+  }
+  .bg-unique::before {
+    width: 300px;
+    height: 300px;
+    background: #07e776;
+    top: -100px;
+    left: -100px;
+  }
+  .bg-unique::after {
+    width: 400px;
+    height: 400px;
+    background: #04b35f;
+    bottom: -150px;
+    right: -150px;
+  }
+  form, h2, p {
+    position: relative;
+    z-index: 10;
+  }
+
+  .text-accent {
+      color: #07e776;
+   }
+   .icon-color {
+      color: #07e776;
+   }
+   footer {
+      position: relative;
+      background-color: transparent;
+      overflow: hidden;
+   }
+   .bg-fixed-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -10;
+      pointer-events: none;
+      background-attachment: fixed;
+   }
+
+   .glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    box-shadow: 0 8px 32px 0 rgba(7, 231, 118, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid rgba(7, 231, 118, 0.12);
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .icon-glow {
+    box-shadow: 0 0 32px 8px #07e77655, 0 0 0 4px #00ffa355;
+    transition: box-shadow 0.3s;
+  }
+  .glass-card:hover .icon-glow {
+    box-shadow: 0 0 48px 16px #07e77699, 0 0 0 8px #00ffa399;
+  }
+
+  
+        
+        .services-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary), #2ef0a1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(7, 231, 118, 0.1);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            position: relative;
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .icon-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--primary), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+        
+        .icon-container i {
+            font-size: 30px;
+            background: linear-gradient(45deg, var(--primary), #2ef0a1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+        
+        .explore-btn {
+            background: linear-gradient(90deg, var(--dark), var(--dark));
+            color: var(--primary);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .explore-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #2ef0a1);
+            z-index: -1;
+            transition: var(--transition);
+            opacity: 0;
+            border-radius: 50px;
+        }
+        
+        .explore-btn:hover {
+            color: var(--dark);
+        }
+        
+        .explore-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .explore-btn i {
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .explore-btn:hover i {
+            transform: translateX(4px);
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+ @keyframes pulse-slow {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.3; }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+  }
+
+  @keyframes text-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animate-text-gradient {
+    animation: text-gradient 6s ease infinite;
+    background-size: 200% auto;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float-reverse {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(20px) rotate(-5deg); }
+  }
+  .animate-float-reverse {
+    animation: float-reverse 7s ease-in-out infinite;
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(7, 231, 118, 0.3);
+  }
+
+  .shadow-glow-green {
+    box-shadow: 0 0 25px rgba(7, 231, 118, 0.4);
+  }
+
+   @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    .animate-float {
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float-reverse {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(20px) rotate(-5deg); }
+    }
+    .animate-float-reverse {
+      animation: float-reverse 9s ease-in-out infinite;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .icon-glow {
+      box-shadow: 0 0 20px rgba(7, 231, 118, 0.4);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .group:hover .icon-glow {
+      box-shadow: 0 0 30px rgba(7, 231, 118, 0.6);
+    }
+
+    [data-anim],[data-animate]{
+  opacity:0;transform:translateY(14px) scale(.985);filter:blur(2px);
+  will-change:transform,opacity,filter;backface-visibility:hidden;
+}
+
+    </style>
+  </head>
+
+  <body class="relative overflow-x-hidden scroll-smooth">
+    
+  <!-- Navbar -->
+<nav class="absolute top-0 left-0 w-full z-20 bg-gradient-to-b from-black/40 to-transparent backdrop-blur-sm">
+  <div class="flex items-center justify-between px-6 py-4">
+    <a href="#" class="flex items-center">
+      <img src="image/Untitled-1 copy.png" alt="fas Innovative" class="h-20 w-auto select-none" />
+    </a>
+
+    <!-- Mobile Hamburger -->
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#07E776] rounded z-30" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Desktop Nav -->
+   <ul class="hidden md:flex items-center space-x-8 text-white font-semibold text-sm">
+  <li><a class="hover:text-[#07E776] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07E776] rounded" href="#home">Home</a></li>
+  <li><a class="hover:text-[#07E776] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07E776] rounded" href="#services">Services</a></li>
+  <li><a class="hover:text-[#07E776] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07E776] rounded" href="#portfolio">Portfolio</a></li>
+  <li><a class="hover:text-[#07E776] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07E776] rounded" href="#testimonials">Testimonials</a></li>
+  <li><a class="hover:text-[#07E776] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07E776] rounded" href="#team">Team</a></li>
+
+  <!-- Dropdown -->
+  <li class="relative group cursor-pointer">
+    <span class="flex items-center hover:text-[#07E776] transition-colors select-none focus-within:text-[#07E776]" tabindex="0">
+      Menu
+      <svg class="ml-1 w-3.5 h-3.5 text-white group-hover:text-[#07E776] transition-colors" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M7 10l5 5 5-5z"/>
+      </svg>
+    </span>
+    <ul class="absolute left-0 mt-2 w-48 bg-[#161616] border border-[#07E776] rounded-md shadow-lg opacity-0 invisible group-focus-within:opacity-100 group-focus-within:visible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 z-30">
+      <li><a class="block px-4 py-2 hover:bg-[#07E776] hover:text-[#161616]" href="#why-us">About</a></li>
+      <li><a class="block px-4 py-2 hover:bg-[#07E776] hover:text-[#161616]" href="#pricing-root">Pricing</a></li>
+      <li><a class="block px-4 py-2 hover:bg-[#07E776] hover:text-[#161616]" href="#faq">FAQs</a></li>
+      <li><a class="block px-4 py-2 hover:bg-[#07E776] hover:text-[#161616]" href="#footer">Terms</a></li>
+      <li><a class="block px-4 py-2 hover:bg-[#07E776] hover:text-[#161616]" href="#footer">Privacy</a></li>
+      <li><a class="block px-4 py-2 hover:bg-[#07E776] hover:text-[#161616]" href="#blogs">Blogs</a></li>
+    </ul>
+  </li>
+
+  <li><a class="hover:text-[#07E776] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#07E776] rounded" href="#blogs">News</a></li>
+</ul>
+
+    <button class="hidden md:block bg-gradient-to-r from-[#07E776] to-[#065f4a] text-white font-bold text-xs uppercase px-5 py-2 rounded shadow-[0_10px_25px_-5px_rgba(7,231,118,0.4),_0_8px_10px_-6px_rgba(7,231,118,0.25)] hover:translate-y-0.5 transition-all">
+      GET QUOTES
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu (slide-in + scroll) -->
+<div id="mobile-menu" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div class="relative ml-auto h-full w-[85%] max-w-sm bg-[#161616] flex flex-col p-6 overflow-y-auto shadow-xl transition-transform duration-300 ease-out translate-x-full" id="mobile-panel">
+    <div class="flex justify-between items-center mb-8">
+      <img src="image/Untitled-1 copy.png" alt="Logo" class="h-10" />
+      <button id="close-menu" class="text-white text-2xl leading-none px-2 py-1 rounded hover:text-[#07E776]" aria-label="Close menu">&times;</button>
+    </div>
+   <ul class="space-y-6 text-white text-lg">
+  <li><a class="hover:text-[#07E776]" href="#home">Home</a></li>
+  <li><a class="hover:text-[#07E776]" href="#services">Services</a></li>
+  <li><a class="hover:text-[#07E776]" href="#portfolio">Portfolio</a></li>
+  <li><a class="hover:text-[#07E776]" href="#testimonials">Testimonials</a></li>
+  <li><a class="hover:text-[#07E776]" href="#team">Team</a></li>
+  <li><a class="hover:text-[#07E776]" href="#blogs">News</a></li>
+  <li><a class="hover:text-[#07E776]" href="#why-us">About</a></li>
+  <li><a class="hover:text-[#07E776]" href="#pricing-root">Pricing</a></li>
+  <li><a class="hover:text-[#07E776]" href="#faq">FAQs</a></li>
+  <li><a class="hover:text-[#07E776]" href="#footer">Terms</a></li>
+  <li><a class="hover:text-[#07E776]" href="#footer">Privacy</a></li>
+  <li><a class="hover:text-[#07E776]" href="#blogs">Blogs</a></li>
+</ul>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<main id="home" class="relative z-10 w-full px-4 sm:px-6 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 py-12 pt-28">
+
+  <!-- Background image + subtle glows -->
+  <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+    <img alt="Abstract background" class="w-full h-full object-cover object-top pointer-events-none select-none" src="https://zrtechsolutions.com/demo/html/nexonix/assets/images/hero-bg.png" />
+    <!-- Soft gradient glow accents -->
+    <div class="absolute -top-10 -left-10 h-72 w-72 rounded-full bg-[#07E776]/20 blur-3xl"></div>
+    <div class="absolute bottom-[-60px] right-[-40px] h-96 w-96 rounded-full bg-emerald-300/10 blur-3xl"></div>
+    <!-- Spider‑web canvas layer (new) -->
+  <canvas id="spiderWeb" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+  </div>
+
+  <section class="flex-1 max-w-full md:max-w-2xl text-white select-none w-full">
+    <div class="space-y-3">
+      <p class="text-xs uppercase tracking-[0.2em] text-white/60"data-animate="up">We craft digital experiences</p>
+      <h1 class="font-extrabold text-4xl sm:text-5xl md:text-[3.5rem] leading-tight text-[#07E776] md:whitespace-nowrap"data-animate="up">Elevate Your</h1>
+      <h2 class="font-extrabold text-4xl sm:text-5xl md:text-[3.5rem] leading-tight pb-2 bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent"data-animate="up">
+  Digital Presence
+</h2>
+
+ <p class="mt-3 text-sm sm:text-base text-[#07E776]/80 max-w-lg" data-animate="up">Innovative, modern, and cutting-edge solutions tailored for you.</p>
+    </div>
+
+    <ul class="mt-6 space-y-3 sm:space-y-4 max-w-md">
+      <!-- Item -->
+      <li class="flex items-start gap-3 text-sm sm:text-base"data-animate="up">
+        <span class="w-6 h-6 sm:w-7 sm:h-7 bg-[#07E776]/20 text-[#07E776] ring-1 ring-[#07E776]/30 rounded-full flex items-center justify-center mt-0.5">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <span>Custom Web Development</span>
+      </li>
+
+      <li class="flex items-start gap-3 text-sm sm:text-base"data-animate="up">
+        <span class="w-6 h-6 sm:w-7 sm:h-7 bg-[#07E776]/20 text-[#07E776] ring-1 ring-[#07E776]/30 rounded-full flex items-center justify-center mt-0.5">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <span>Custom App Development</span>
+      </li>
+
+      <li class="flex items-start gap-3 text-sm sm:text-base"data-animate="up">
+        <span class="w-6 h-6 sm:w-7 sm:h-7 bg-[#07E776]/20 text-[#07E776] ring-1 ring-[#07E776]/30 rounded-full flex items-center justify-center mt-0.5">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <span>E-commerce Optimization</span>
+      </li>
+
+      <li class="flex items-start gap-3 text-sm sm:text-base" data-animate="up">
+        <span class="w-6 h-6 sm:w-7 sm:h-7 bg-[#07E776]/20 text-[#07E776] ring-1 ring-[#07E776]/30 rounded-full flex items-center justify-center mt-0.5">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <span>Animation</span>
+      </li>
+
+      <li class="flex items-start gap-3 text-sm sm:text-base" data-animate="up">
+        <span class="w-6 h-6 sm:w-7 sm:h-7 bg-[#07E776]/20 text-[#07E776] ring-1 ring-[#07E776]/30 rounded-full flex items-center justify-center mt-0.5">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <span>Graphics, 2D/3D</span>
+      </li>
+
+      <li class="flex items-start gap-3 text-sm sm:text-base" data-animate="up">
+        <span class="w-6 h-6 sm:w-7 sm:h-7 bg-[#07E776]/20 text-[#07E776] ring-1 ring-[#07E776]/30 rounded-full flex items-center justify-center mt-0.5">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+        <span>Social Media Marketing</span>
+      </li>
+    </ul>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <a class="border border-[#07E776] text-[#07E776] rounded-full px-6 py-2.5 text-sm text-center hover:bg-[#07E776] hover:text-[#161616] transition-colors" href="#"  data-animate="up">Explore Services</a>
+      <button class="bg-gradient-to-r from-[#07E776] to-[#065f4a] text-white font-bold px-6 py-2.5 rounded shadow-[0_10px_25px_-5px_rgba(7,231,118,0.4),_0_8px_10px_-6px_rgba(7,231,118,0.25)] hover:translate-y-0.5 transition-all text-sm sm:text-base w-full sm:w-auto"  data-animate="up" >
+        GET STARTED
+      </button>
+    </div>
+  </section>
+</main>
+
+  
+ <!-- Enhanced Services Cards Section -->
+    <section id="services" class="services-section" data-animate="up">
+        <div class="section-header">
+            <h2>Our Premium Services</h2>
+            <p>We offer a wide range of digital solutions to help your business thrive in the digital landscape</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Card 1 -->
+            <div class="service-card">
+                <div class="icon-container">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Custom Web Development</h3>
+                <p>Tailored web solutions that meet your unique business needs and enhance user experience.</p>
+                <button class="explore-btn">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card">
+                <div class="icon-container">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Custom App Development</h3>
+                <p>Innovative mobile applications designed to engage users and drive business growth.</p>
+                <button class="explore-btn">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="service-card">
+                <div class="icon-container">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>E-commerce Optimization</h3>
+                <p>Boost your online sales with our expert strategies for e-commerce platforms.</p>
+                <button class="explore-btn">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="service-card">
+                <div class="icon-container">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Animation</h3>
+                <p>Captivating animations that bring your ideas to life and engage your audience.</p>
+                <button class="explore-btn">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="service-card">
+                <div class="icon-container">
+                    <i class="fas fa-image"></i>
+                </div>
+                <h3>Graphics</h3>
+                <p>Stunning graphics designed to enhance your brand's visual identity and appeal.</p>
+                <button class="explore-btn">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="service-card">
+                <div class="icon-container">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <h3>Social Media Marketing</h3>
+                <p>Enhance your brand's visibility and engagement through targeted social media strategies.</p>
+                <button class="explore-btn">
+                    Explore <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+<section id="why-us" class="relative overflow-hidden min-h-screen flex flex-col items-center justify-center px-4 py-16 bg-black text-white" data-animate="up">
+  <!-- Green Circles Background -->
+  <img alt="Large green circle on left side" aria-hidden="true" class="absolute left-0 top-1/4 w-32 h-32 rounded-full opacity-10 blur-3xl" src="https://storage.googleapis.com/a1aa/image/1026b109-d0b6-4a47-ea3a-db01819bb08a.jpg" />
+  <img alt="Medium green circle on left side lower" aria-hidden="true" class="absolute left-10 top-2/3 w-20 h-20 rounded-full opacity-15 blur-2xl" src="https://storage.googleapis.com/a1aa/image/3399a6e5-0bdc-482d-0913-7ad5442a09c3.jpg" />
+  <img alt="Small green circle on left side bottom" aria-hidden="true" class="absolute left-20 bottom-20 w-16 h-16 rounded-full opacity-20 blur-xl" src="https://storage.googleapis.com/a1aa/image/f0725ce8-99ed-4760-1fc8-1642ddef4807.jpg" />
+  <img alt="Large green circle on right side top" aria-hidden="true" class="absolute right-0 top-1/5 w-28 h-28 rounded-full opacity-10 blur-3xl" src="https://storage.googleapis.com/a1aa/image/4040b05a-5384-4ba0-00cd-bf950bdd2709.jpg" />
+  <img alt="Medium green circle on right side middle" aria-hidden="true" class="absolute right-10 top-1/2 w-24 h-24 rounded-full opacity-15 blur-2xl" src="https://storage.googleapis.com/a1aa/image/6a47e4b1-f11a-405f-3c4a-0ce8cef93030.jpg" />
+  <img alt="Small green circle on right side bottom" aria-hidden="true" class="absolute right-20 bottom-24 w-16 h-16 rounded-full opacity-20 blur-xl" src="https://storage.googleapis.com/a1aa/image/654ca8dc-9e29-4034-d351-ab35a12c7fe2.jpg" />
+  <img alt="Tiny green circle near bottom center" aria-hidden="true" class="absolute left-1/2 bottom-10 w-12 h-12 rounded-full opacity-10 blur-lg -translate-x-1/2" src="https://storage.googleapis.com/a1aa/image/2a1bb839-ce58-4ac9-0ed3-625023e87be0.jpg" />
+  <img alt="Tiny green circle near top center" aria-hidden="true" class="absolute left-1/2 top-10 w-14 h-14 rounded-full opacity-10 blur-lg -translate-x-1/2" src="https://storage.googleapis.com/a1aa/image/13292a3d-4430-4923-09ad-3721c94b5700.jpg" />
+
+  <div class="max-w-7xl w-full relative z-10">
+    <div class="text-center mb-12 px-4 sm:px-0">
+      <h2 class="font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight">
+        Why Choose Us
+      </h2>
+      <p class="text-sm sm:text-base mt-3 max-w-2xl mx-auto font-medium text-gray-300">
+        We combine experience, innovation, and seamless execution to deliver top-tier solutions.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <!-- Card Component -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all duration-300 border border-white/10">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#07E776] flex items-center justify-center">
+            <i class="fas fa-file-alt text-black text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-lg">Experience</h3>
+            <p class="text-xs sm:text-sm text-gray-300 mt-1">
+              Over a decade of expertise in delivering cutting-edge solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeat similar structure for other cards -->
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all duration-300 border border-white/10">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#07E776] flex items-center justify-center">
+            <i class="fas fa-tags text-black text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-lg">Affordable Pricing</h3>
+            <p class="text-xs sm:text-sm text-gray-300 mt-1">
+              Premium quality at competitive rates to maximize your ROI.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all duration-300 border border-white/10">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#07E776] flex items-center justify-center">
+            <i class="fas fa-lightbulb text-black text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-lg">Innovation</h3>
+            <p class="text-xs sm:text-sm text-gray-300 mt-1">
+              Creativity and technology for unparalleled results.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all duration-300 border border-white/10">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#07E776] flex items-center justify-center">
+            <i class="fas fa-clock text-black text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-lg">Timely Delivery</h3>
+            <p class="text-xs sm:text-sm text-gray-300 mt-1">
+              On-time project completion without compromising quality.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all duration-300 border border-white/10">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#07E776] flex items-center justify-center">
+            <i class="fas fa-user-tie text-black text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-lg">Client-Centric</h3>
+            <p class="text-xs sm:text-sm text-gray-300 mt-1">
+              Tailored approach to meet your unique business needs.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 hover:bg-white/15 transition-all duration-300 border border-white/10">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-[#07E776] flex items-center justify-center">
+            <i class="fas fa-headset text-black text-lg"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base sm:text-lg">24/7 Support</h3>
+            <p class="text-xs sm:text-sm text-gray-300 mt-1">
+              Our dedicated team is always available to assist you.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--potfolio-->
+   <div id="portfolio" class="max-w-7xl mx-auto px-4 py-16" data-animate="up">
+   <!-- Header Section -->
+   <div class="text-center mb-12">
+      <h2 class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#07e776] to-[#05c462] text-4xl md:text-5xl mb-4">
+         Our Portfolio
+      </h2>
+      <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
+         Explore our latest creative works and development projects that showcase innovation and excellence.
+      </p>
+   </div>
+
+   <!-- Filter Buttons (Optional) -->
+   <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button class="px-6 py-2 rounded-full bg-[#07e776] text-black font-semibold hover:bg-[#05c462] transition-colors">All</button>
+      <button class="px-6 py-2 rounded-full border border-gray-600 text-gray-300 hover:border-[#07e776] hover:text-[#07e776] transition-all">Design</button>
+      <button class="px-6 py-2 rounded-full border border-gray-600 text-gray-300 hover:border-[#07e776] hover:text-[#07e776] transition-all">Development</button>
+      <button class="px-6 py-2 rounded-full border border-gray-600 text-gray-300 hover:border-[#07e776] hover:text-[#07e776] transition-all">Branding</button>
+   </div>
+
+   <!-- Portfolio Grid -->
+   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Portfolio Item 1 -->
+      <div class="group relative overflow-hidden rounded-xl bg-gray-900 cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
+         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
+            <img alt="Orange fruit splashing into water - Creative Photography Project" 
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                 src="https://storage.googleapis.com/a1aa/image/e8a31267-c0f1-41bc-676c-f72c4fff70c8.jpg"/>
+         </div>
+         <!-- Overlay -->
+         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+               <span class="inline-block px-3 py-1 text-xs font-semibold bg-[#07e776] text-black rounded-full mb-3">Photography</span>
+               <h3 class="text-xl font-bold text-white mb-2">Splash Dynamics</h3>
+               <p class="text-gray-300 text-sm mb-4">High-speed photography capturing fluid motion and color dynamics.</p>
+               <a href="#" class="inline-flex items-center text-[#07e776] hover:text-white transition-colors">
+                  View Project 
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Portfolio Item 2 -->
+      <div class="group relative overflow-hidden rounded-xl bg-gray-900 cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
+         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
+            <img alt="Red glowing network connections - Digital Infrastructure Project" 
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                 src="https://storage.googleapis.com/a1aa/image/28d466e5-86ce-4143-73ca-8ec016738870.jpg"/>
+         </div>
+         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+               <span class="inline-block px-3 py-1 text-xs font-semibold bg-[#07e776] text-black rounded-full mb-3">Development</span>
+               <h3 class="text-xl font-bold text-white mb-2">Neural Networks</h3>
+               <p class="text-gray-300 text-sm mb-4">Visualizing complex data connections and network architecture.</p>
+               <a href="#" class="inline-flex items-center text-[#07e776] hover:text-white transition-colors">
+                  View Project 
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Portfolio Item 3 -->
+      <div class="group relative overflow-hidden rounded-xl bg-gray-900 cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
+         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
+            <img alt="Yellow paint splash - Abstract Art Project" 
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                 src="https://storage.googleapis.com/a1aa/image/604865d6-ee8c-491c-3a65-54f1157001f1.jpg"/>
+         </div>
+         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+               <span class="inline-block px-3 py-1 text-xs font-semibold bg-[#07e776] text-black rounded-full mb-3">Design</span>
+               <h3 class="text-xl font-bold text-white mb-2">Color Explosion</h3>
+               <p class="text-gray-300 text-sm mb-4">Abstract art exploring color theory and dynamic compositions.</p>
+               <a href="#" class="inline-flex items-center text-[#07e776] hover:text-white transition-colors">
+                  View Project 
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Portfolio Item 4 -->
+      <div class="group relative overflow-hidden rounded-xl bg-gray-900 cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
+         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
+            <img alt="Glowing lightbulbs - Innovation Concept" 
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                 src="https://storage.googleapis.com/a1aa/image/d95b6fe2-d713-4181-34b2-05a7b811f0a8.jpg"/>
+         </div>
+         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+               <span class="inline-block px-3 py-1 text-xs font-semibold bg-[#07e776] text-black rounded-full mb-3">Branding</span>
+               <h3 class="text-xl font-bold text-white mb-2">Bright Ideas</h3>
+               <p class="text-gray-300 text-sm mb-4">Brand identity project focusing on innovation and creativity.</p>
+               <a href="#" class="inline-flex items-center text-[#07e776] hover:text-white transition-colors">
+                  View Project 
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Portfolio Item 5 -->
+      <div class="group relative overflow-hidden rounded-xl bg-gray-900 cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
+         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
+            <img alt="Orange slice lamp - Product Design" 
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                 src="https://storage.googleapis.com/a1aa/image/068426e2-9463-4475-bb9c-e004b819f0fe.jpg"/>
+         </div>
+         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+               <span class="inline-block px-3 py-1 text-xs font-semibold bg-[#07e776] text-black rounded-full mb-3">Product Design</span>
+               <h3 class="text-xl font-bold text-white mb-2">Citrus Glow</h3>
+               <p class="text-gray-300 text-sm mb-4">Innovative lighting design inspired by natural forms.</p>
+               <a href="#" class="inline-flex items-center text-[#07e776] hover:text-white transition-colors">
+                  View Project 
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Portfolio Item 6 -->
+      <div class="group relative overflow-hidden rounded-xl bg-gray-900 cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
+         <div class="aspect-w-16 aspect-h-12 overflow-hidden">
+            <img alt="Mechanical tiger - 3D Modeling Project" 
+                 class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
+                 src="https://storage.googleapis.com/a1aa/image/735ba1d2-1375-4fa6-2a21-6c6b5e166ef8.jpg"/>
+         </div>
+         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+               <span class="inline-block px-3 py-1 text-xs font-semibold bg-[#07e776] text-black rounded-full mb-3">3D Design</span>
+               <h3 class="text-xl font-bold text-white mb-2">Mech Wildlife</h3>
+               <p class="text-gray-300 text-sm mb-4">Fusion of nature and technology in stunning 3D artwork.</p>
+               <a href="#" class="inline-flex items-center text-[#07e776] hover:text-white transition-colors">
+                  View Project 
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- View More Button -->
+   <div class="text-center mt-12">
+      <button class="px-8 py-3 bg-[#07e776] text-black font-bold rounded-lg hover:bg-[#05c462] transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-[#07e776]/50">
+         View All Projects
+      </button>
+   </div>
+</div>
+
+
+<!-- Modern Pricing Section -->
+<section id="pricing-root" class="relative min-h-screen bg-black text-white px-4 py-14 overflow-hidden" data-animate="up">
+  <!-- Background accents -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute -top-40 -left-32 h-96 w-96 rounded-full bg-[#07e776]/15 blur-3xl"></div>
+    <div class="absolute -bottom-48 -right-24 h-[28rem] w-[28rem] rounded-full bg-[#07e776]/10 blur-3xl"></div>
+    <div class="absolute inset-0 opacity-[0.08] bg-[radial-gradient(ellipse_at_top_right,rgba(7,231,118,0.5),transparent_35%)]"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-5xl">
+    <!-- Heading -->
+    <h1 class="text-center font-extrabold text-2xl sm:text-3xl md:text-4xl leading-tight mb-2">
+      Flexible Pricing Plans
+    </h1>
+    <p class="text-center text-white/80 text-xs sm:text-sm md:text-base mb-10 max-w-lg mx-auto">
+      Choose a plan that fits your needs & budget.
+    </p>
+
+    <!-- Billing Toggle -->
+    <div class="mb-12 flex items-center justify-center gap-3 text-[11px] sm:text-xs select-none">
+      <input id="billing-toggle" type="checkbox" class="peer sr-only" />
+      <span class="transition opacity-100 peer-checked:opacity-60">Monthly</span>
+      <label for="billing-toggle" class="relative inline-flex items-center cursor-pointer">
+        <!-- track -->
+        <span class="w-12 h-6 rounded-full bg-white/15 ring-1 ring-white/10 transition-colors peer-checked:bg-[#07e776]/20"></span>
+        <!-- thumb -->
+        <span class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow ring-1 ring-white/20 transition-transform duration-300 translate-x-0 peer-checked:translate-x-6"></span>
+      </label>
+      <span class="flex items-center gap-2 opacity-70 peer-checked:opacity-100">
+        Yearly
+        <span class="hidden sm:inline-block rounded-full bg-[#07e776]/15 text-[#07e776] px-2 py-0.5 text-[10px] ring-1 ring-[#07e776]/30">
+          Save 20%
+        </span>
+      </span>
+    </div>
+
+    <!-- Plans -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Basic -->
+      <div class="group relative rounded-2xl p-[1px] bg-gradient-to-b from-[#07e776]/40 to-transparent transition hover:from-[#07e776]/70">
+        <div class="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 p-6 min-h-[440px] flex flex-col shadow-[0_10px_40px_rgba(7,231,118,0.1)] transition-transform duration-300 hover:-translate-y-2">
+          <h2 class="font-extrabold text-lg mb-3">Basic</h2>
+
+          <!-- Price -->
+          <div class="text-center mb-6">
+            <!-- Monthly -->
+            <div data-price="monthly">
+              <span class="text-[#07e776] font-extrabold text-3xl">$25</span>
+              <div class="text-xs font-semibold text-white/70">/ month</div>
+            </div>
+            <!-- Yearly (20% off) = 25 * 12 * 0.8 = 240 -->
+            <div data-price="yearly" class="hidden">
+              <span class="text-[#07e776] font-extrabold text-3xl">$240</span>
+              <div class="text-xs font-semibold text-white/70">/ year</div>
+            </div>
+          </div>
+
+          <!-- Features -->
+          <ul class="space-y-2 text-xs font-semibold">
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              10GB Storage
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              1 Domain Name
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Free SSL
+            </li>
+            <li class="flex items-center text-white/40 line-through">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Daily Backup
+            </li>
+            <li class="flex items-center text-white/40 line-through">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Live Support
+            </li>
+          </ul>
+
+          <button class="mt-auto w-full bg-[#07e776] text-black text-xs font-extrabold rounded-lg px-5 py-2 transition
+                         hover:bg-transparent hover:text-[#07e776] border border-[#07e776]
+                         shadow-[0_0_24px_rgba(7,231,118,0.25)]">
+            GET STARTED
+          </button>
+        </div>
+      </div>
+
+      <!-- Standard (Most Popular) -->
+      <div class="group relative rounded-2xl p-[1px] bg-gradient-to-b from-[#07e776]/60 to-transparent transition hover:from-[#07e776]/90">
+        <div class="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 p-6 min-h-[440px] flex flex-col shadow-[0_10px_50px_rgba(7,231,118,0.18)] transition-transform duration-300 hover:-translate-y-2">
+          <div class="absolute top-3 right-3">
+            <span class="rounded-full bg-[#07e776]/15 text-[#07e776] text-[10px] font-bold px-2.5 py-1 ring-1 ring-[#07e776]/30 uppercase tracking-wide">
+              Most Popular
+            </span>
+          </div>
+          <h2 class="font-extrabold text-lg mb-3">Standard</h2>
+
+          <!-- Price -->
+          <div class="text-center mb-6">
+            <!-- Monthly -->
+            <div data-price="monthly">
+              <span class="text-[#07e776] font-extrabold text-3xl">$50</span>
+              <div class="text-xs font-semibold text-white/70">/ month</div>
+            </div>
+            <!-- Yearly (20% off) = 50 * 12 * 0.8 = 480 -->
+            <div data-price="yearly" class="hidden">
+              <span class="text-[#07e776] font-extrabold text-3xl">$480</span>
+              <div class="text-xs font-semibold text-white/70">/ year</div>
+            </div>
+          </div>
+
+          <!-- Features -->
+          <ul class="space-y-2 text-xs font-semibold">
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              50GB Storage
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              5 Domain Names
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Free SSL
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Daily Backup
+            </li>
+            <li class="flex items-center text-white/90">
+              <svg class="h-4 w-4 mr-2 text-[#07e776]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Live Support
+            </li>
+          </ul>
+
+          <button class="mt-auto w-full bg-[#07e776] text-black text-xs font-extrabold rounded-lg px-5 py-2 transition
+                         hover:bg-transparent hover:text-[#07e776] border border-[#07e776]
+                         shadow-[0_0_24px_rgba(7,231,118,0.3)]">
+            GET STARTED
+          </button>
+        </div>
+      </div>
+
+      <!-- Premium -->
+      <div class="group relative rounded-2xl p-[1px] bg-gradient-to-b from-[#07e776]/40 to-transparent transition hover:from-[#07e776]/70">
+        <div class="rounded-2xl bg-black/70 backdrop-blur-xl border border-white/10 p-6 min-h-[440px] flex flex-col shadow-[0_10px_40px_rgba(7,231,118,0.1)] transition-transform duration-300 hover:-translate-y-2">
+          <h2 class="font-extrabold text-lg mb-3">Premium</h2>
+
+          <!-- Price -->
+          <div class="text-center mb-6">
+            <!-- Monthly -->
+            <div data-price="monthly">
+              <span class="text-[#07e776] font-extrabold text-3xl">$100</span>
+              <div class="text-xs font-semibold text-white/70">/ month</div>
+            </div>
+            <!-- Yearly (20% off) = 100 * 12 * 0.8 = 960 -->
+            <div data-price="yearly" class="hidden">
+              <span class="text-[#07e776] font-extrabold text-3xl">$960</span>
+              <div class="text-xs font-semibold text-white/70">/ year</div>
+            </div>
+          </div>
+
+          <!-- Features -->
+          <ul class="space-y-2 text-xs font-semibold">
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Unlimited Storage
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              10 Domain Names
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Free SSL
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Daily Backup
+            </li>
+            <li class="flex items-center text-[#07e776]">
+              <svg class="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.5 7.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 111.414-1.414L8 11.586l6.793-6.793a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Live Support
+            </li>
+          </ul>
+
+          <button class="mt-auto w-full bg-[#07e776] text-black text-xs font-extrabold rounded-lg px-5 py-2 transition
+                         hover:bg-transparent hover:text-[#07e776] border border-[#07e776]
+                         shadow-[0_0_24px_rgba(7,231,118,0.25)]">
+            GET STARTED
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--countour-->
+<div id="testimonials" class="client bg-gradient-to-br from-gray-950 via-gray-900 to-black text-white font-poppins min-h-screen flex items-center justify-center p-6 relative overflow-hidden" data-animate="up">
+  <!-- Floating decorative elements -->
+  <div class="absolute top-20 left-20 w-64 h-64 rounded-full bg-[#07e776]/10 blur-3xl opacity-30 animate-float"></div>
+  <div class="absolute bottom-20 right-20 w-48 h-48 rounded-full bg-[#07e776]/10 blur-3xl opacity-30 animate-float-reverse"></div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-6xl w-full relative z-10">
+    <!-- Card 1 -->
+    <div class="relative bg-gray-900/60 backdrop-blur-md border border-gray-800 rounded-3xl p-8 sm:p-10 flex flex-col items-center text-center transition-all duration-500 hover:bg-gray-800/70 hover:shadow-[0_0_30px_rgba(7,231,118,0.2)] group">
+      <!-- Icon container with modern glow -->
+      <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-20 h-20 rounded-2xl bg-gradient-to-br from-[#07e776] to-[#00ffa3] flex items-center justify-center shadow-[0_0_20px_rgba(7,231,118,0.4)] group-hover:shadow-[0_0_30px_rgba(7,231,118,0.6)] transition-shadow duration-300">
+        <div class="w-16 h-16 rounded-xl bg-gray-900 flex items-center justify-center">
+          <i class="fas fa-users text-3xl text-[#07e776]"></i>
+        </div>
+      </div>
+
+      <!-- Number with modern counter effect -->
+      <h2 class="mt-12 text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:text-[#07e776] transition-colors duration-300">
+        <span class="counter">232</span>+
+      </h2>
+
+      <!-- Title with subtle animation -->
+      <h3 class="mt-4 text-xl font-semibold group-hover:text-[#07e776] transition-colors duration-300">Satisfied Clients</h3>
+
+      <!-- Description with modern typography -->
+      <p class="mt-3 text-sm text-gray-400 max-w-xs group-hover:text-gray-300 transition-colors duration-300">
+        Building lasting relationships through exceptional service and innovative solutions.
+      </p>
+
+      <!-- Decorative divider -->
+      <div class="mt-6 w-20 h-0.5 bg-gradient-to-r from-transparent via-[#07e776] to-transparent group-hover:via-[#00ffa3] transition-colors duration-300"></div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="relative bg-gray-900/60 backdrop-blur-md border border-gray-800 rounded-3xl p-8 sm:p-10 flex flex-col items-center text-center transition-all duration-500 hover:bg-gray-800/70 hover:shadow-[0_0_30px_rgba(7,231,118,0.2)] group">
+      <!-- Icon container -->
+      <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-20 h-20 rounded-2xl bg-gradient-to-br from-[#07e776] to-[#00ffa3] flex items-center justify-center shadow-[0_0_20px_rgba(7,231,118,0.4)] group-hover:shadow-[0_0_30px_rgba(7,231,118,0.6)] transition-shadow duration-300">
+        <div class="w-16 h-16 rounded-xl bg-gray-900 flex items-center justify-center">
+          <i class="fas fa-chart-line text-3xl text-[#07e776]"></i>
+        </div>
+      </div>
+
+      <h2 class="mt-12 text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:text-[#07e776] transition-colors duration-300">
+        <span class="counter">521</span>+
+      </h2>
+
+      <h3 class="mt-4 text-xl font-semibold group-hover:text-[#07e776] transition-colors duration-300">Projects Delivered</h3>
+
+      <p class="mt-3 text-sm text-gray-400 max-w-xs group-hover:text-gray-300 transition-colors duration-300">
+        Transforming ideas into reality with precision and creativity since our inception.
+      </p>
+
+      <div class="mt-6 w-20 h-0.5 bg-gradient-to-r from-transparent via-[#07e776] to-transparent group-hover:via-[#00ffa3] transition-colors duration-300"></div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="relative bg-gray-900/60 backdrop-blur-md border border-gray-800 rounded-3xl p-8 sm:p-10 flex flex-col items-center text-center transition-all duration-500 hover:bg-gray-800/70 hover:shadow-[0_0_30px_rgba(7,231,118,0.2)] group">
+      <!-- Icon container -->
+      <div class="absolute -top-8 left-1/2 -translate-x-1/2 w-20 h-20 rounded-2xl bg-gradient-to-br from-[#07e776] to-[#00ffa3] flex items-center justify-center shadow-[0_0_20px_rgba(7,231,118,0.4)] group-hover:shadow-[0_0_30px_rgba(7,231,118,0.6)] transition-shadow duration-300">
+        <div class="w-16 h-16 rounded-xl bg-gray-900 flex items-center justify-center">
+          <i class="fas fa-headset text-3xl text-[#07e776]"></i>
+        </div>
+      </div>
+
+      <h2 class="mt-12 text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:text-[#07e776] transition-colors duration-300">
+        <span class="counter">453</span>k+
+      </h2>
+
+      <h3 class="mt-4 text-xl font-semibold group-hover:text-[#07e776] transition-colors duration-300">Support Hours</h3>
+
+      <p class="mt-3 text-sm text-gray-400 max-w-xs group-hover:text-gray-300 transition-colors duration-300">
+        Dedicated 24/7 support ensuring your success with expert assistance whenever needed.
+      </p>
+
+      <div class="mt-6 w-20 h-0.5 bg-gradient-to-r from-transparent via-[#07e776] to-transparent group-hover:via-[#00ffa3] transition-colors duration-300"></div>
+    </div>
+  </div>
+</div>
+
+<!--our team-->
+ <section id="team" class="max-w-7xl mx-auto px-4 py-16 text-center bg-gradient-to-br from-[#0a0a0a] to-[#121212] text-white" data-animate="up">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-[#07e776] font-bold text-3xl md:text-4xl mb-1 tracking-tight">
+      Meet Our Visionary Leaders
+    </h2>
+    <p class="text-[#c9c9c9] text-base md:text-lg mb-12 max-w-2xl mx-auto">
+      Pioneering innovation with passion and expertise to shape the future
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+    <!-- Leader 1 -->
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.03]">
+      <div class="aspect-w-3 aspect-h-4">
+        <img alt="Jhone Bi in professional attire" class="w-full h-full object-cover rounded-t-3xl" 
+             src="https://storage.googleapis.com/a1aa/image/cfc96d27-5fa8-4af3-c782-b9375f210486.jpg"/>
+      </div>
+      
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent px-6 py-5">
+        <div class="flex items-end">
+          <div>
+            <h3 class="text-white font-semibold text-lg md:text-xl mb-1">Jhone Bi</h3>
+            <p class="text-[#a0e8cc] text-sm md:text-base">Application Manager</p>
+          </div>
+          <div class="ml-auto">
+            <a href="#" class="text-[#07e776] hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leader 2 -->
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.03]">
+      <div class="aspect-w-3 aspect-h-4">
+        <img alt="Sani Awesome smiling professionally" class="w-full h-full object-cover rounded-t-3xl" 
+             src="https://storage.googleapis.com/a1aa/image/2027d3de-69d1-4a18-2cc1-70b54420a3aa.jpg"/>
+      </div>
+      
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent px-6 py-5">
+        <div class="flex items-end">
+          <div>
+            <h3 class="text-white font-semibold text-lg md:text-xl mb-1">Sani Awesome</h3>
+            <p class="text-[#a0e8cc] text-sm md:text-base">Social Media Maestro</p>
+          </div>
+          <div class="ml-auto">
+            <a href="#" class="text-[#07e776] hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leader 3 -->
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.03]">
+      <div class="aspect-w-3 aspect-h-4">
+        <img alt="Andrio Willi in professional blue attire" class="w-full h-full object-cover rounded-t-3xl" 
+             src="https://storage.googleapis.com/a1aa/image/7ae6467d-5262-4a83-0054-f06c953e39ed.jpg"/>
+      </div>
+      
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent px-6 py-5">
+        <div class="flex items-end">
+          <div>
+            <h3 class="text-white font-semibold text-lg md:text-xl mb-1">Andrio Willi</h3>
+            <p class="text-[#a0e8cc] text-sm md:text-base">Content Architect</p>
+          </div>
+          <div class="ml-auto">
+            <a href="#" class="text-[#07e776] hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leader 4 -->
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-[1.03]">
+      <div class="aspect-w-3 aspect-h-4">
+        <img alt="Afa Jonson in professional pose" class="w-full h-full object-cover rounded-t-3xl" 
+             src="https://storage.googleapis.com/a1aa/image/f6804850-fbc1-41c3-d323-073a1c6e13b8.jpg"/>
+      </div>
+      
+      <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent px-6 py-5">
+        <div class="flex items-end">
+          <div>
+            <h3 class="text-white font-semibold text-lg md:text-xl mb-1">Afa Jonson</h3>
+            <p class="text-[#a0e8cc] text-sm md:text-base">Growth Strategist</p>
+          </div>
+          <div class="ml-auto">
+            <a href="#" class="text-[#07e776] hover:text-white transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ <!--faq-->
+<div id="faq" class="bg-black text-white min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16" data-animate="up">
+    <!-- Header Section -->
+    <h1 class="font-poppins font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4 text-center text-[#07e776] max-w-4xl">
+      Frequently Asked Questions
+    </h1>
+    <p class="text-white text-xs sm:text-sm md:text-base lg:text-lg font-semibold mb-8 md:mb-10 lg:mb-12 text-center max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl px-2">
+      Find answers to common questions with clear and precise explanations.
+    </p>
+    
+    <!-- FAQ Container -->
+    <div class="w-full max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl space-y-3 sm:space-y-4 md:space-y-5">
+      <!-- FAQ Item 1 -->
+      <div class="bg-[#07e776] bg-opacity-10 rounded-md sm:rounded-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 text-white font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#07e776]/50 hover:bg-opacity-15">
+        <button aria-expanded="false" aria-controls="faq1" class="flex items-center gap-2 sm:gap-3 md:gap-4 w-full focus:outline-none focus:ring-2 focus:ring-[#07e776] focus:ring-opacity-50 rounded" onclick="toggleFaq('faq1', this)">
+          <span class="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-[#07e776] text-black text-xs sm:text-sm md:text-base flex-shrink-0 transition-transform duration-300">
+            <i class="fas fa-question"></i>
+          </span>
+          <span class="text-left flex-1 text-sm sm:text-base md:text-lg">What is web domain and hosting?</span>
+          <i class="fas fa-chevron-down ml-2 sm:ml-3 md:ml-4 transition-transform duration-300 text-xs sm:text-sm md:text-base"></i>
+        </button>
+        <div id="faq1" class="mt-3 sm:mt-4 text-white text-xs sm:text-sm md:text-base lg:text-lg hidden pl-7 sm:pl-9 md:pl-11 pr-2">
+          A web domain is the address where users can access your website, while hosting is the service that stores your website's files and makes them accessible on the internet.
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="bg-[#07e776] bg-opacity-10 rounded-md sm:rounded-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 text-white font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#07e776]/50 hover:bg-opacity-15">
+        <button aria-expanded="false" aria-controls="faq2" class="flex items-center gap-2 sm:gap-3 md:gap-4 w-full focus:outline-none focus:ring-2 focus:ring-[#07e776] focus:ring-opacity-50 rounded" onclick="toggleFaq('faq2', this)">
+          <span class="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-[#07e776] text-black text-xs sm:text-sm md:text-base flex-shrink-0 transition-transform duration-300">
+            <i class="fas fa-question"></i>
+          </span>
+          <span class="text-left flex-1 text-sm sm:text-base md:text-lg">Which server is best for websites, Linux or Windows?</span>
+          <i class="fas fa-chevron-down ml-2 sm:ml-3 md:ml-4 transition-transform duration-300 text-xs sm:text-sm md:text-base"></i>
+        </button>
+        <div id="faq2" class="mt-3 sm:mt-4 text-white text-xs sm:text-sm md:text-base lg:text-lg hidden pl-7 sm:pl-9 md:pl-11 pr-2">
+          Linux servers are generally preferred for websites due to their stability, security, and cost-effectiveness, but Windows servers are better for sites that require Microsoft technologies.
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="bg-[#07e776] bg-opacity-10 rounded-md sm:rounded-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 text-white font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#07e776]/50 hover:bg-opacity-15">
+        <button aria-expanded="false" aria-controls="faq3" class="flex items-center gap-2 sm:gap-3 md:gap-4 w-full focus:outline-none focus:ring-2 focus:ring-[#07e776] focus:ring-opacity-50 rounded" onclick="toggleFaq('faq3', this)">
+          <span class="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-[#07e776] text-black text-xs sm:text-sm md:text-base flex-shrink-0 transition-transform duration-300">
+            <i class="fas fa-question"></i>
+          </span>
+          <span class="text-left flex-1 text-sm sm:text-base md:text-lg">Google Cloud or Amazon server: which is better and faster?</span>
+          <i class="fas fa-chevron-down ml-2 sm:ml-3 md:ml-4 transition-transform duration-300 text-xs sm:text-sm md:text-base"></i>
+        </button>
+        <div id="faq3" class="mt-3 sm:mt-4 text-white text-xs sm:text-sm md:text-base lg:text-lg hidden pl-7 sm:pl-9 md:pl-11 pr-2">
+          Both Google Cloud and Amazon AWS offer powerful cloud services; the best choice depends on your specific needs, but Google Cloud is often praised for speed and pricing, while AWS has a broader service range.
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="bg-[#07e776] bg-opacity-10 rounded-md sm:rounded-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 text-white font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#07e776]/50 hover:bg-opacity-15">
+        <button aria-expanded="false" aria-controls="faq4" class="flex items-center gap-2 sm:gap-3 md:gap-4 w-full focus:outline-none focus:ring-2 focus:ring-[#07e776] focus:ring-opacity-50 rounded" onclick="toggleFaq('faq4', this)">
+          <span class="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 rounded-full bg-[#07e776] text-black text-xs sm:text-sm md:text-base flex-shrink-0 transition-transform duration-300">
+            <i class="fas fa-question"></i>
+          </span>
+          <span class="text-left flex-1 text-sm sm:text-base md:text-lg">Why is organic SEO important for all businesses?</span>
+          <i class="fas fa-chevron-down ml-2 sm:ml-3 md:ml-4 transition-transform duration-300 text-xs sm:text-sm md:text-base"></i>
+        </button>
+        <div id="faq4" class="mt-3 sm:mt-4 text-white text-xs sm:text-sm md:text-base lg:text-lg hidden pl-7 sm:pl-9 md:pl-11 pr-2">
+          Organic SEO helps businesses increase their visibility in search engines naturally, driving more targeted traffic without paying for ads, which leads to sustainable growth and credibility.
+        </div>
+      </div>
+    </div>
+</div>
+<!--build-->
+  <div id="contact" class="relative w-full min-h-[300px] overflow-hidden bg-gradient-to-br from-gray-900/10 to-gray-800/20" data-animate="up">
+  <!-- Background with subtle animation -->
+  <div class="absolute inset-0 overflow-hidden">
+    <img
+      alt="Modern tech background with abstract geometric patterns"
+      class="w-full h-full object-cover opacity-20 scale-110 animate-pulse-slow"
+      height="300"
+      src="https://storage.googleapis.com/a1aa/image/c3e66dce-2a2f-46dc-be9d-a4480cf5f3a2.jpg"
+      width="1920"
+    />
+    <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-transparent to-black/20"></div>
+  </div>
+
+  <!-- Main content card with enhanced effects -->
+  <div class="relative max-w-2xl mx-4 md:mx-8 lg:mx-auto my-12 p-8 md:p-10 rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl shadow-2xl
+              transition-all duration-500 ease-in-out hover:shadow-glow hover:scale-[1.02]">
+    <!-- Decorative elements -->
+    <div class="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-[#07e776] rounded-tl-xl"></div>
+    <div class="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-[#07e776] rounded-tr-xl"></div>
+    <div class="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-[#07e776] rounded-bl-xl"></div>
+    <div class="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-[#07e776] rounded-br-xl"></div>
+
+    <div class="text-center">
+      <!-- Animated heading -->
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#07e776] to-[#00ffcc]
+                 animate-text-gradient">
+        Let's Build Something Amazing
+      </h2>
+
+      <!-- Subtitle with subtle animation -->
+      <p class="text-white/90 text-sm md:text-base mb-8 px-2 md:px-4 transition-colors duration-300 hover:text-white">
+        Our team delivers cutting-edge solutions tailored to your needs. Share your vision with us and let's create
+        something extraordinary together.
+      </p>
+
+      <!-- Button group with modern styling -->
+      <div class="flex flex-wrap justify-center gap-4">
+        <!-- Primary button with enhanced effects -->
+        <button
+          class="group relative flex items-center gap-3 bg-gradient-to-r from-[#07e776] to-[#00ffcc] text-black font-medium text-sm md:text-base
+                 px-6 py-3 rounded-full overflow-hidden transition-all duration-300 hover:shadow-glow-green
+                 before:absolute before:inset-0 before:bg-white before:opacity-10 before:rounded-full
+                 before:transition before:duration-500 before:ease-out hover:before:scale-150 hover:before:opacity-0"
+          type="button"
+        >
+          <span class="relative z-10 flex items-center gap-2">
+            <i class="fas fa-paper-plane text-xs md:text-sm"></i>
+            <span>Start Your Project</span>
+          </span>
+          <span class="absolute right-0 w-8 h-8 rounded-full bg-[#07e776]/20 group-hover:animate-ping"></span>
+        </button>
+
+        <!-- Secondary button with modern outline effect -->
+        <button
+          class="group relative flex items-center gap-3 border-2 border-[#07e776]/30 text-[#07e776] font-medium text-sm md:text-base
+                 px-6 py-3 rounded-full overflow-hidden transition-all duration-300 hover:bg-[#07e776]/10
+                 hover:text-white hover:shadow-glow-green/50 before:absolute before:inset-0
+                 before:border-2 before:border-[#07e776] before:rounded-full before:scale-x-0
+                 before:transition before:duration-300 before:ease-out group-hover:before:scale-x-100"
+          type="button"
+        >
+          <span class="relative z-10 flex items-center gap-2">
+            <i class="fab fa-whatsapp text-xs md:text-sm"></i>
+            <span>Quick Chat</span>
+          </span>
+        </button>
+      </div>
+
+      <!-- Subtle decorative element -->
+      <div class="mt-6 pt-4 border-t border-white/10">
+        <p class="text-xs text-white/60 italic">
+          <i class="far fa-clock mr-1"></i> Typically respond within 24 hours
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating decorative elements -->
+  <div class="absolute top-10 left-10 w-16 h-16 rounded-full bg-[#07e776]/10 blur-xl animate-float"></div>
+  <div class="absolute bottom-20 right-10 w-20 h-20 rounded-full bg-[#00ffcc]/10 blur-xl animate-float-reverse"></div>
+</div>
+ 
+<!--blogs-->
+ <section id="blogs" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" data-animate="up">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-300">
+      Our Latest Blogs
+    </h2>
+    <p class="mt-4 text-gray-400 text-sm">
+      Stay updated with the latest industry trends and insights.
+    </p>
+  </div>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Blog Card 1 -->
+    <a href="#" class="group block transition-all duration-300 hover:-translate-y-1">
+      <div class="bg-black rounded-xl overflow-hidden border border-green-500/20 shadow-lg hover:shadow-green-500/10 hover:border-green-400 transition-all duration-300">
+        <div class="relative">
+          <img alt="Two men looking at a laptop" 
+               class="w-full h-48 object-cover brightness-90 group-hover:brightness-110 transition-all"
+               src="https://storage.googleapis.com/a1aa/image/4f7a1b84-1f91-486f-b8c6-a89f4faa8033.jpg">
+          <div class="absolute top-4 left-4 px-3 py-1 bg-green-500/90 rounded-full text-xs font-medium text-black">
+            DOMAIN & HOSTING
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-semibold text-xl text-white mb-3 group-hover:text-green-400 transition-colors">
+            How to Host a Website on Any Hosting Provider?
+          </h3>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-green-400 font-medium">William Bla</span>
+            <span class="text-green-400/70">Feb 1, 2025</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Blog Card 2 -->
+    <a href="#" class="group block transition-all duration-300 hover:-translate-y-1">
+      <div class="bg-black rounded-xl overflow-hidden border border-green-500/20 shadow-lg hover:shadow-green-500/10 hover:border-green-400 transition-all duration-300">
+        <div class="relative">
+          <img alt="Woman working on laptop" 
+               class="w-full h-48 object-cover brightness-90 group-hover:brightness-110 transition-all"
+               src="https://storage.googleapis.com/a1aa/image/4f82733b-c688-4b6f-b71a-b944322e2ae7.jpg">
+          <div class="absolute top-4 left-4 px-3 py-1 bg-green-500/90 rounded-full text-xs font-medium text-black">
+            ADVERTISEMENT
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-semibold text-xl text-white mb-3 group-hover:text-green-400 transition-colors">
+            How to Create Ads on Google AdWords?
+          </h3>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-green-400 font-medium">Jobi Ret</span>
+            <span class="text-green-400/70">Oct 5, 2025</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Blog Card 3 -->
+    <a href="#" class="group block transition-all duration-300 hover:-translate-y-1">
+      <div class="bg-black rounded-xl overflow-hidden border border-green-500/20 shadow-lg hover:shadow-green-500/10 hover:border-green-400 transition-all duration-300">
+        <div class="relative">
+          <img alt="Group in meeting" 
+               class="w-full h-48 object-cover brightness-90 group-hover:brightness-110 transition-all"
+               src="https://storage.googleapis.com/a1aa/image/7f9864cf-f591-41ec-6e37-725a3d1b2603.jpg">
+          <div class="absolute top-4 left-4 px-3 py-1 bg-green-500/90 rounded-full text-xs font-medium text-black">
+            MARKETING
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-semibold text-xl text-white mb-3 group-hover:text-green-400 transition-colors">
+            What is Digital Marketing and Why Is It Important?
+          </h3>
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-green-400 font-medium">Main Dow</span>
+            <span class="text-green-400/70">Dec 22, 2025</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+ <!--newsletter-->
+<section
+  aria-labelledby="newsletter-heading" id="newsletter"
+  class="relative flex flex-col justify-center text-center overflow-hidden
+         bg-black py-8 sm:py-12 md:py-16 lg:py-20
+         px-4 sm:px-6 lg:px-8 text-white"
+ data-animate="up">
+  <!-- Decorative floating circles -->
+  <div class="absolute inset-0 pointer-events-none">
+    <span
+      class="absolute w-72 h-72 bg-white opacity-5 rounded-full
+             top-[-10%] left-[-10%] animate-pulse"
+    ></span>
+    <span
+      class="absolute w-48 h-48 bg-white opacity-5 rounded-full
+             bottom-[-15%] right-[-5%] animate-pulse animation-delay-2000"
+    ></span>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto">
+    <!-- Header -->
+    <h2
+      id="newsletter-heading"
+      class="inline-flex items-center justify-center gap-2
+             text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold"
+    >
+      Stay Updated
+      <img
+        src="https://storage.googleapis.com/a1aa/image/226cccef-5495-40c6-8bbf-294999e157b7.jpg"
+        alt="Rocket icon"
+        class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-9 lg:h-9 animate-bounce"
+      />
+    </h2>
+
+    <!-- Description -->
+    <p class="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl
+              text-white/75 max-w-2xl mx-auto px-2">
+      Subscribe to our newsletter and never miss out on the latest updates, offers, and insights.
+    </p>
+
+    <!-- Form -->
+    <form
+      class="mt-6 sm:mt-8 max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3"
+      novalidate
+    >
+      <label for="email" class="sr-only">Email address</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="Enter your email"
+        class="w-full px-5 py-3 rounded-full
+               bg-white text-black placeholder-gray-500
+               focus:outline-none focus:ring-2 focus:ring-[#07e776] focus:ring-offset-2"
+      />
+
+      <button
+        type="submit"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3
+               bg-[#07e776] text-black font-semibold rounded-full
+               hover:bg-[#06d969] transition"
+      >
+        <i class="fas fa-paper-plane text-sm"></i>
+        <span>Subscribe</span>
+      </button>
+    </form>
+
+    <!-- Privacy Note -->
+    <p class="mx-auto mt-4 text-xs sm:text-sm text-white/60 max-w-md
+                 flex items-center justify-center gap-2">
+      <i class="far fa-lock"></i>
+      We respect your privacy. No spam, only valuable content.
+    </p>
+  </div>
+</section>
+
+<!--footer-->
+<footer
+  id="footer" class="relative bg-fixed bg-center bg-no-repeat bg-cover"
+  style="background-image:url('https://storage.googleapis.com/a1aa/image/50cd71af-ae34-43ff-7fd5-3a9ff6849319.jpg');"
+ data-animate="up">
+  <!-- Dark gradient overlay for better contrast -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-80"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 grid gap-12 lg:grid-cols-3 text-gray-300">
+    <!-- Brand & Social -->
+    <div class="space-y-6">
+      <!-- Main Brand Name -->
+      <h2 class="text-4xl font-bold text-accent">FAS INNOVATION</h2> 
+      
+      <!-- Logo and secondary brand text from the image -->
+      <div class="flex items-center gap-2"> 
+        <img
+          src="image/Untitled-1 copy.png"
+          alt="FAS Innovations Logo"
+          class="h-16 w-16" 
+        />
+        <span class="text-xl font-semibold text-gray-300">INNOVATIONS.</span> 
+      </div>
+
+      <p class="max-w-xs leading-relaxed">
+        Your partner in digital transformation. Delivering cutting-edge solutions for your business success.
+      </p>
+      
+      <div class="flex space-x-4 text-2xl">
+        <a aria-label="Twitter" class="hover:text-accent transition-colors" href="#"><i class="fab fa-x-twitter"></i></a>
+        <a aria-label="Facebook" class="hover:text-accent transition-colors" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a aria-label="Instagram" class="hover:text-accent transition-colors" href="#"><i class="fab fa-instagram"></i></a>
+        <a aria-label="LinkedIn" class="hover:text-accent transition-colors" href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <!-- Link Sections & Newsletter & Contact Info -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:col-span-2">
+      <!-- Services (mimicking the two columns from the image) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4"> 
+        <nav aria-labelledby="footer-services-col1">
+          <h3 id="footer-services-col1" class="sr-only">Our Services Part 1</h3> <!-- Screen reader only heading -->
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-accent transition-colors">App Development</a></li>
+            <li><a href="#" class="hover:text-accent transition-colors">Web Development</a></li>
+            <li><a href="#" class="hover:text-accent transition-colors">E-commerce store Optimization</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-services-col2">
+          <h3 id="footer-services-col2" class="sr-only">Our Services Part 2</h3> <!-- Screen reader only heading -->
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-accent transition-colors">Animation</a></li>
+            <li><a href="#" class="hover:text-accent transition-colors">Graphics, 2D/3D</a></li>
+            <li><a href="#" class="hover:text-accent transition-colors">Social Media Marketing</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Newsletter Signup (Kept, as it's common in footers) -->
+      <div>
+        <h3 class="mb-4 text-white font-bold uppercase">Newsletter</h3>
+        <form class="flex flex-col sm:flex-row gap-2">
+          <label for="footer-email" class="sr-only">Email address</label>
+          <input
+            type="email"
+            id="footer-email"
+            placeholder="Your email"
+            required
+            class="w-full px-4 py-2 rounded-md border border-gray-600 bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent"
+          />
+          <button
+            type="submit"
+            class="px-4 py-2 bg-accent text-black font-medium rounded-md hover:bg-accent-dark transition-colors"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info (Kept, as it's common in footers) -->
+      <address class="not-italic space-y-4">
+        <h3 class="text-white font-bold uppercase mb-2">Get in Touch</h3>
+        <p class="flex items-center gap-2">
+          <i class="fas fa-map-marker-alt"></i>
+          1234 Business St., City, Country
+        </p>
+        <p class="flex items-center gap-2">
+          <i class="fas fa-phone-alt"></i>
+          <a href="tel:+1234567890" class="hover:text-accent transition-colors">+123 456 7890</a>
+        </p>
+        <p class="flex items-center gap-2">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:support@example.com" class="hover:text-accent transition-colors">support@example.com</a>
+        </p>
+      </address>
+    </div>
+  </div>
+</footer>
+ 
+<!-- Minimal JS for mobile menu animation -->
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const closeBtn = document.getElementById('close-menu');
+  const menu = document.getElementById('mobile-menu');
+  const panel = document.getElementById('mobile-panel');
+
+  function openMenu() {
+    menu.classList.remove('hidden');
+    requestAnimationFrame(() => panel.classList.remove('translate-x-full'));
+    document.body.classList.add('overflow-hidden');
+    toggleBtn?.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    panel.classList.add('translate-x-full');
+    setTimeout(() => menu.classList.add('hidden'), 250);
+    document.body.classList.remove('overflow-hidden');
+    toggleBtn?.setAttribute('aria-expanded', 'false');
+  }
+  toggleBtn?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  menu?.addEventListener('click', (e) => { if (e.target === menu) closeMenu(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+</script>
+
+  <!-- Card Activation Script -->
+    <script>
+      
+      const cards = document.querySelectorAll(".card-container");
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          cards.forEach((c) => c.classList.remove("active"));
+          card.classList.add("active");
+        });
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            cards.forEach((c) => c.classList.remove("active"));
+            card.classList.add("active");
+          }
+        });
+      });
+ </script>
+
+ <script>
+  const carousel = document.getElementById("carousel");
+  const dots = document.querySelectorAll("#dots button");
+  const cardElements = carousel.querySelectorAll("div");
+  const cardStyle = window.getComputedStyle(cardElements[0]);
+  const cardMarginRight = parseInt(cardStyle.marginRight);
+  const cardWidth = cardElements[0].offsetWidth + cardMarginRight;
+
+  // Responsive card width handling (adjust based on screen size)
+  function getCardWidth() {
+    const width = cardElements[0].offsetWidth;
+    return width + cardMarginRight;
+  }
+
+  // Update dots based on scroll position
+  carousel.addEventListener("scroll", () => {
+    const scrollLeft = carousel.scrollLeft;
+    const cardWidth = getCardWidth();
+    const totalCards = cardElements.length;
+    const visibleCards = Math.floor(window.innerWidth / cardWidth) || 1;
+
+    // Determine which "page" is currently in view
+    const page = Math.round(scrollLeft / (cardWidth * visibleCards));
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-accent", i === page);
+      dot.classList.toggle("bg-gray-700", i !== page);
+      dot.setAttribute("aria-current", i === page ? "true" : "false");
+    });
+  });
+
+  // Click on dots scrolls carousel
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const index = parseInt(dot.getAttribute("data-index"));
+      const cardWidth = getCardWidth();
+      const visibleCards = Math.floor(window.innerWidth / cardWidth) || 1;
+      carousel.scrollTo({
+        left: index * cardWidth * visibleCards,
+        behavior: "smooth",
+      });
+    });
+  });
+
+  // Optional: Re-calculate on resize
+  window.addEventListener("resize", () => {
+    const cardWidth = getCardWidth();
+    const scrollLeft = carousel.scrollLeft;
+    const page = Math.round(scrollLeft / cardWidth);
+
+    // Update active dot after resize
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-accent", i === page);
+      dot.classList.toggle("bg-gray-700", i !== page);
+      dot.setAttribute("aria-current", i === page ? "true" : "false");
+    });
+  });
+</script>
+
+  <script>
+    function toggleFaq(id, btn) {
+      const content = document.getElementById(id);
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all other answers and reset icons
+      document.querySelectorAll('[id^="faq"]').forEach(el => {
+        if(el.id !== id) {
+          el.classList.add('hidden');
+          const button = el.previousElementSibling.querySelector('button');
+          if(button) {
+            button.setAttribute('aria-expanded', 'false');
+            // Rotate chevron down icon back
+            const chevron = button.querySelector('i.fas.fa-chevron-down');
+            if(chevron) chevron.style.transform = 'rotate(0deg)';
+            // Rotate question mark icon back
+            const questionIconSpan = button.querySelector('span.flex.items-center.justify-center');
+            if(questionIconSpan) questionIconSpan.style.transform = 'rotate(0deg)';
+          }
+        }
+      });
+
+      if (expanded) {
+        content.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.querySelector('i.fas.fa-chevron-down').style.transform = 'rotate(0deg)';
+        btn.querySelector('span.flex.items-center.justify-center').style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.querySelector('i.fas.fa-chevron-down').style.transform = 'rotate(180deg)';
+        btn.querySelector('span.flex.items-center.justify-center').style.transform = 'rotate(180deg)';
+      }
+    }
+  </script>
+
+   <script>
+        // Add interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.service-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+ </script>
+
+  <!-- Tiny JS for Monthly/Yearly toggle -->
+  <script>
+    (function () {
+      const toggle = document.getElementById('billing-toggle');
+      const show = (yearly) => {
+        document.querySelectorAll('[data-price="monthly"]').forEach(el => el.classList.toggle('hidden', yearly));
+        document.querySelectorAll('[data-price="yearly"]').forEach(el => el.classList.toggle('hidden', !yearly));
+      };
+      toggle.addEventListener('change', () => show(toggle.checked));
+      show(toggle.checked);
+    })();
+  </script>
+  
+  <!-- Counter animation script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200; // The lower the slower
+
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target') || +counter.textContent.replace(/\D/g, '');
+          const count = +counter.textContent.replace(/\D/g, '');
+          const inc = target / speed;
+
+          if (count < target) {
+            counter.textContent = Math.ceil(count + inc) + (counter.textContent.includes('+') ? '+' : '');
+            setTimeout(updateCount, 1);
+          } else {
+            counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+          }
+        };
+
+        // Initialize counter values
+        counter.setAttribute('data-target', counter.textContent.replace(/\D/g, ''));
+        counter.textContent = '0' + (counter.textContent.includes('+') ? '+' : '');
+
+        // Start counting when card is in view
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              updateCount();
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+
+        observer.observe(counter.closest('.group'));
+      });
+    });
+  </script>
+
+<script>
+/* Spider‑web BG — interactive + auto motion */
+(() => {
+  const canvas = document.getElementById('spiderWeb');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let W = 0, H = 0, maxDist = 130;
+  const theme = { r: 7, g: 231, b: 118 }; // #07E776
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const pointer = { x: 0, y: 0, active: false, last: 0, auto: true };
+
+  let points = [];
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const lerp  = (a, b, t) => a + (b - a) * t;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const area = W * H;
+    const count = clamp(Math.round(area / 15000), 50, 150); // density auto
+    maxDist = clamp(Math.sqrt(area) * 0.06, 90, 160);
+    spawn(count);
+  }
+
+  function spawn(n) {
+    points.length = 0;
+    for (let i = 0; i < n; i++) {
+      const x = Math.random() * W;
+      const y = Math.random() * H;
+      points.push(makePoint(x, y));
+    }
+  }
+
+  function makePoint(x, y) {
+    const speed  = 0.08 + Math.random() * 0.08;
+    const driftR = 25 + Math.random() * 45;
+    const seed   = Math.random() * Math.PI * 2;
+    return { x, y, bx: x, by: y, tx: x, ty: y, vx: 0, vy: 0, speed, driftR, seed, nextT: 0 };
+  }
+
+  function newTarget(p, t) {
+    const angle = p.seed + Math.sin(t * 0.18 + p.seed) * Math.PI;
+    const r = p.driftR * (0.5 + Math.random() * 0.8);
+    p.tx = clamp(p.bx + Math.cos(angle) * r + (Math.random() - 0.5) * 8, 0, W);
+    p.ty = clamp(p.by + Math.sin(angle) * r + (Math.random() - 0.5) * 8, 0, H);
+    p.nextT = t + 1.8 + Math.random() * 2.2;
+  }
+
+  function stepPoint(p, dt, t) {
+    if (t > p.nextT) newTarget(p, t);
+
+    // pull towards target
+    p.vx += (p.tx - p.x) * (p.speed * 0.6);
+    p.vy += (p.ty - p.y) * (p.speed * 0.6);
+
+    // gentle sway
+    p.vx += Math.cos(t * 0.9 + p.seed) * 0.02;
+    p.vy += Math.sin(t * 1.1 + p.seed) * 0.02;
+
+    // pointer repel (web stretch)
+    const affect = (pointer.auto || pointer.active) ? 1 : 0;
+    if (affect) {
+      const rad = Math.min(W, H) * 0.28;
+      const dx = pointer.x - p.x, dy = pointer.y - p.y;
+      const d2 = dx*dx + dy*dy;
+      if (d2 < rad*rad) {
+        const d = Math.sqrt(d2) || 1;
+        const f = (1 - d / rad) * 1.0;
+        p.vx -= (dx / d) * f;
+        p.vy -= (dy / d) * f;
+      }
+    }
+
+    // friction + integrate
+    p.vx *= 0.94;
+    p.vy *= 0.94;
+    p.x += p.vx * dt * 60;
+    p.y += p.vy * dt * 60;
+
+    // keep in bounds
+    if (p.x < -10 || p.x > W + 10 || p.y < -10 || p.y > H + 10) {
+      p.x = clamp(p.x, 0, W);
+      p.y = clamp(p.y, 0, H);
+      p.vx *= -0.6; p.vy *= -0.6;
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+
+    // connections (curved for "webby" feel)
+    const n = points.length;
+    for (let i = 0; i < n; i++) {
+      const p = points[i];
+      for (let j = i + 1; j < n; j++) {
+        const q = points[j];
+        const dx = p.x - q.x, dy = p.y - q.y;
+        const d2 = dx*dx + dy*dy;
+        if (d2 > maxDist*maxDist) continue;
+
+        const d = Math.sqrt(d2);
+        let a = (1 - d / maxDist);
+
+        // highlight near pointer
+        if (pointer.auto || pointer.active) {
+          const mx = (p.x + q.x) * 0.5 - pointer.x;
+          const my = (p.y + q.y) * 0.5 - pointer.y;
+          const md = Math.sqrt(mx*mx + my*my);
+          const rad = Math.min(W, H) * 0.35;
+          a += Math.max(0, 1 - md / rad) * 0.35;
+        }
+
+        a = clamp(a, 0, reduceMotion ? 0.6 : 0.85);
+        ctx.strokeStyle = `rgba(${theme.r},${theme.g},${theme.b},${a * 0.6})`;
+        ctx.lineWidth = clamp(1.2 - (d / maxDist), 0.2, 1.2);
+        ctx.beginPath();
+        // slight curve
+        const cx = (p.x + q.x) / 2 + (dy) * 0.08;
+        const cy = (p.y + q.y) / 2 - (dx) * 0.08;
+        ctx.moveTo(p.x, p.y);
+        ctx.quadraticCurveTo(cx, cy, q.x, q.y);
+        ctx.stroke();
+      }
+    }
+
+    // tiny knots
+    for (const p of points) {
+      ctx.fillStyle = `rgba(${theme.r},${theme.g},${theme.b},0.35)`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 0.8, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  // loop
+  let last = performance.now();
+  let paused = false;
+
+  function tick(now) {
+    const dt = Math.min(0.033, (now - last) / 1000);
+    last = now;
+
+    // autopilot when idle
+    const idle = now - pointer.last > 2800;
+    pointer.auto = idle;
+    if (idle) {
+      const ax = W * (0.5 + 0.25 * Math.sin(now * 0.00035));
+      const ay = H * (0.5 + 0.32 * Math.sin(now * 0.00027 + 1.3));
+      pointer.x = lerp(pointer.x || ax, ax, 0.04);
+      pointer.y = lerp(pointer.y || ay, ay, 0.04);
+    }
+
+    const t = now / 1000;
+    for (const p of points) stepPoint(p, dt, t);
+    draw(t);
+
+    if (!paused) requestAnimationFrame(tick);
+  }
+
+  // pointer events
+  canvas.addEventListener('pointermove', e => {
+    const r = canvas.getBoundingClientRect();
+    pointer.x = e.clientX - r.left;
+    pointer.y = e.clientY - r.top;
+    pointer.active = true;
+    pointer.last = performance.now();
+  }, { passive: true });
+
+  canvas.addEventListener('pointerleave', () => { pointer.active = false; });
+
+  // resize + visibility
+  const ro = new ResizeObserver(resize);
+  ro.observe(canvas);
+
+  document.addEventListener('visibilitychange', () => {
+    paused = document.hidden;
+    if (!paused) { last = performance.now(); requestAnimationFrame(tick); }
+  });
+
+  // init
+  resize();
+  last = performance.now();
+  requestAnimationFrame(tick);
+})();
+</script>
+
+<script>
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+  const mapType = t => {
+    const v = (t||'').toLowerCase();
+    if (!v || v==='up'|| v==='rise') return 'rise';
+    if (v==='down'|| v==='fall') return 'fall';
+    if (v==='left'|| v==='slide-left') return 'slideLeft';
+    if (v==='right'|| v==='slide-right') return 'slideRight';
+    if (['zoom','zoom-in','zoom-out','zoomout'].includes(v)) return 'zoom';
+    if (['flip','flip-up','flipin'].includes(v)) return 'flipUp';
+    if (['tilt','tilt-in'].includes(v)) return 'tilt';
+    if (v==='wipe' || v==='wipe-up') return 'wipe';
+    if (v==='fade') return 'fade';
+    return 'rise';
+  };
+
+  const presets = {
+    rise: () => [
+      { opacity: 0, transform: 'translate3d(0, 24px, 0) scale(.98)', filter: 'blur(6px)' },
+      { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)',      filter: 'blur(0)' }
+    ],
+    fall: () => [
+      { opacity: 0, transform: 'translate3d(0, -20px, 0) scale(.98)', filter: 'blur(6px)' },
+      { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)',       filter: 'blur(0)' }
+    ],
+    slideLeft: () => [
+      { opacity: 0, transform: 'translate3d(28px, 0, 0)', filter: 'blur(4px)' },
+      { opacity: 1, transform: 'translate3d(0, 0, 0)',    filter: 'blur(0)'  }
+    ],
+    slideRight: () => [
+      { opacity: 0, transform: 'translate3d(-28px, 0, 0)', filter: 'blur(4px)' },
+      { opacity: 1, transform: 'translate3d(0, 0, 0)',     filter: 'blur(0)'  }
+    ],
+    zoom: () => [
+      { opacity: 0, transform: 'translate3d(0,10px,0) scale(.92)', filter: 'blur(4px)' },
+      { opacity: 1, transform: 'translate3d(0,0,0) scale(1)',      filter: 'blur(0)' }
+    ],
+    flipUp: () => [
+      { opacity: 0, transform: 'perspective(900px) translate3d(0,24px,0) rotateX(-18deg)', transformOrigin: '50% 100%' },
+      { opacity: 1, transform: 'perspective(900px) translate3d(0,0,0) rotateX(0deg)',      transformOrigin: '50% 100%' }
+    ],
+    tilt: () => [
+      { opacity: 0, transform: 'translate3d(0, 18px, 0) rotateZ(1.2deg) scale(.98)', filter: 'blur(4px)' },
+      { opacity: 1, transform: 'translate3d(0, 0, 0) rotateZ(0deg) scale(1)',        filter: 'blur(0)' }
+    ],
+    fade: () => [
+      { opacity: 0, transform: 'translate3d(0,0,0)' },
+      { opacity: 1, transform: 'translate3d(0,0,0)' }
+    ],
+    wipe: () => [
+      { opacity: 1, clipPath: 'inset(0 0 100% 0 round 12px)' },
+      { opacity: 1, clipPath: 'inset(0 0 0 0 round 12px)' }
+    ]
+  };
+
+  const defaultOptions = (el) => ({
+    duration: parseInt(el.dataset.duration || 850, 10),
+    delay:    parseInt(el.dataset.delay    || 0,   10),
+    easing:   el.dataset.easing || 'cubic-bezier(0.2, 0.9, 0.22, 1)',
+    fill: 'both'
+  });
+
+  const prime = (el) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translate3d(0, 14px, 0) scale(.985)';
+    el.style.filter = 'blur(2px)';
+    el.style.willChange = 'transform, opacity, filter';
+    el.style.backfaceVisibility = 'hidden';
+  };
+
+  const revealOne = (el) => {
+    const type = mapType(el.dataset.anim || el.dataset.animate);
+    const frames = (presets[type] || presets.rise)(el);
+    const opts = defaultOptions(el);
+
+    if (!el.dataset.delay && el.hasAttribute('data-auto-delay')) {
+      opts.delay = Math.round(Math.random() * 120);
+    }
+
+    el.animate(frames, opts);
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+      el.style.willChange = 'auto';
+    }, opts.delay + opts.duration + 50);
+  };
+
+  const getTargets = (container) => {
+    const sel = container.dataset.children || container.dataset.child || '';
+    let list = sel ? Array.from(container.querySelectorAll(sel)) : Array.from(container.children);
+    const ex = container.dataset.childrenExclude || container.dataset.exclude || '';
+    if (ex) list = list.filter(el => !el.matches(ex));
+    return list;
+  };
+
+  const order = (list, from, reverse) => {
+    let arr = list.slice();
+    if (from === 'end') arr.reverse();
+    else if (from === 'center') {
+      const mid = (arr.length - 1) / 2;
+      arr = arr.map((el, i) => ({ el, k: Math.abs(i - mid) }))
+               .sort((a,b) => a.k - b.k)
+               .map(o => o.el);
+    }
+    if (reverse && from !== 'end') arr.reverse();
+    return arr;
+  };
+
+  if (reduce) {
+    $('[data-anim], [data-animate]').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+    });
+    return;
+  }
+
+  const nodes = $('[data-anim], [data-animate]');
+  nodes.forEach(prime);
+
+  // Optional: pre-prime children to avoid flash (only if you add data-prime-children on container)
+  $('[data-stagger][data-prime-children]').forEach(container => {
+    getTargets(container).forEach(c => { if (!c.__primed) { prime(c); c.__primed = true; } });
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      io.unobserve(el);
+
+      const stagger = parseInt(el.dataset.stagger || 0, 10);
+      if (stagger > 0) {
+        const from = (el.dataset.staggerFrom || 'start').toLowerCase(); // start | end | center
+        const reverse = el.hasAttribute('data-stagger-reverse');
+        let kids = getTargets(el);
+        kids = order(kids, from, reverse);
+
+        const base = parseInt(el.dataset.delay || 0, 10);
+        kids.forEach((child, i) => {
+          if (!child.__primed) { prime(child); child.__primed = true; }
+          const d = parseInt(child.dataset.delay || 0, 10);
+          child.dataset.delay = (base + d + i * stagger).toString();
+          if (!child.dataset.anim && !child.dataset.animate) {
+            child.dataset.anim = el.dataset.anim || el.dataset.animate || 'rise';
+          }
+          if (el.hasAttribute('data-auto-delay') && !d) {
+            child.dataset.delay = (parseInt(child.dataset.delay,10) + Math.round(Math.random()*120)).toString();
+          }
+          revealOne(child);
+        });
+      } else {
+        revealOne(el);
+      }
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+
+  nodes.forEach(el => io.observe(el));
+})();
+</script>
+
+<script>
+  // Close mobile menu on link click
+  document.querySelectorAll('#mobile-panel a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+</script>
+</body>
+</html>
+
+ 
