@@ -398,6 +398,28 @@
                 font-size: 2rem;
             }
         }
+        
+        /* Rotation transitions */
+.fa-chevron-down, 
+span.flex.items-center.justify-center {
+  transition: transform 0.3s ease;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Mobile touch improvements */
+[aria-controls] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent content jumping */
+html {
+  scroll-behavior: smooth;
+}
+
  @keyframes pulse-slow {
     0%, 100% { opacity: 0.2; }
     50% { opacity: 0.3; }
@@ -1026,24 +1048,28 @@
       Choose a plan that fits your needs & budget.
     </p>
 
-    <!-- Billing Toggle -->
-    <div class="mb-12 flex items-center justify-center gap-3 text-[11px] sm:text-xs select-none">
-      <input id="billing-toggle" type="checkbox" class="peer sr-only" />
-      <span class="transition opacity-100 peer-checked:opacity-60">Monthly</span>
-      <label for="billing-toggle" class="relative inline-flex items-center cursor-pointer">
-        <!-- track -->
-        <span class="w-12 h-6 rounded-full bg-white/15 ring-1 ring-white/10 transition-colors peer-checked:bg-[#07e776]/20"></span>
-        <!-- thumb -->
-        <span class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow ring-1 ring-white/20 transition-transform duration-300 translate-x-0 peer-checked:translate-x-6"></span>
-      </label>
-      <span class="flex items-center gap-2 opacity-70 peer-checked:opacity-100">
-        Yearly
-        <span class="hidden sm:inline-block rounded-full bg-[#07e776]/15 text-[#07e776] px-2 py-0.5 text-[10px] ring-1 ring-[#07e776]/30">
-          Save 20%
-        </span>
-      </span>
-    </div>
-
+<!-- Billing Toggle -->
+<div class="mb-12 flex items-center justify-center gap-3 text-[11px] sm:text-xs select-none">
+  <!-- Monthly text -->
+  <span class="transition opacity-100 peer-checked:opacity-60">Monthly</span>
+  
+  <!-- Toggle container with input and track -->
+  <div class="relative inline-flex items-center cursor-pointer">
+    <input id="billing-toggle" type="checkbox" class="peer sr-only" />
+    <!-- Track (now sibling of input) -->
+    <span class="w-12 h-6 rounded-full bg-white/15 ring-1 ring-white/10 transition-colors peer-checked:bg-[#07e776]/20"></span>
+    <!-- Thumb (now sibling of input) -->
+    <span class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow ring-1 ring-white/20 transition-transform duration-300 translate-x-0 peer-checked:translate-x-6"></span>
+  </div>
+  
+  <!-- Yearly text -->
+  <span class="flex items-center gap-2 opacity-70 peer-checked:opacity-100">
+    Yearly
+    <span class="hidden sm:inline-block rounded-full bg-[#07e776]/15 text-[#07e776] px-2 py-0.5 text-[10px] ring-1 ring-[#07e776]/30">
+      Save 20%
+    </span>
+  </span>
+</div>
     <!-- Plans -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Basic -->
@@ -1908,41 +1934,47 @@
   });
 </script>
 
-  <script>
-    function toggleFaq(id, btn) {
-      const content = document.getElementById(id);
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
+<script>
+function toggleFaq(id, btn) {
+  // Prevent default to avoid any unwanted scrolling/jumping
+  event.preventDefault();
+  
+  const content = document.getElementById(id);
+  const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+  const chevron = btn.querySelector('.fa-chevron-down');
+  const questionIcon = btn.querySelector('span.flex.items-center.justify-center');
 
-      // Close all other answers and reset icons
-      document.querySelectorAll('[id^="faq"]').forEach(el => {
-        if(el.id !== id) {
-          el.classList.add('hidden');
-          const button = el.previousElementSibling.querySelector('button');
-          if(button) {
-            button.setAttribute('aria-expanded', 'false');
-            // Rotate chevron down icon back
-            const chevron = button.querySelector('i.fas.fa-chevron-down');
-            if(chevron) chevron.style.transform = 'rotate(0deg)';
-            // Rotate question mark icon back
-            const questionIconSpan = button.querySelector('span.flex.items-center.justify-center');
-            if(questionIconSpan) questionIconSpan.style.transform = 'rotate(0deg)';
-          }
-        }
-      });
-
-      if (expanded) {
-        content.classList.add('hidden');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.querySelector('i.fas.fa-chevron-down').style.transform = 'rotate(0deg)';
-        btn.querySelector('span.flex.items-center.justify-center').style.transform = 'rotate(0deg)';
-      } else {
-        content.classList.remove('hidden');
-        btn.setAttribute('aria-expanded', 'true');
-        btn.querySelector('i.fas.fa-chevron-down').style.transform = 'rotate(180deg)';
-        btn.querySelector('span.flex.items-center.justify-center').style.transform = 'rotate(180deg)';
+  // Toggle current item
+  if (isExpanded) {
+    // Close current item
+    content.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+    chevron?.classList.remove('rotate-180');
+    questionIcon?.classList.remove('rotate-180');
+  } else {
+    // Close all other items first
+    document.querySelectorAll('[aria-controls]').forEach(otherBtn => {
+      if (otherBtn !== btn) {
+        const otherId = otherBtn.getAttribute('aria-controls');
+        const otherContent = document.getElementById(otherId);
+        const otherChevron = otherBtn.querySelector('.fa-chevron-down');
+        const otherQuestionIcon = otherBtn.querySelector('span.flex.items-center.justify-center');
+        
+        otherContent?.classList.add('hidden');
+        otherBtn.setAttribute('aria-expanded', 'false');
+        otherChevron?.classList.remove('rotate-180');
+        otherQuestionIcon?.classList.remove('rotate-180');
       }
-    }
-  </script>
+    });
+    
+    // Open current item
+    content.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    chevron?.classList.add('rotate-180');
+    questionIcon?.classList.add('rotate-180');
+  }
+}
+</script>
 
    <script>
         // Add interactive effects
@@ -1962,17 +1994,28 @@
  </script>
 
   <!-- Tiny JS for Monthly/Yearly toggle -->
-  <script>
-    (function () {
-      const toggle = document.getElementById('billing-toggle');
-      const show = (yearly) => {
-        document.querySelectorAll('[data-price="monthly"]').forEach(el => el.classList.toggle('hidden', yearly));
-        document.querySelectorAll('[data-price="yearly"]').forEach(el => el.classList.toggle('hidden', !yearly));
-      };
-      toggle.addEventListener('change', () => show(toggle.checked));
-      show(toggle.checked);
-    })();
-  </script>
+
+<script>
+  (function () {
+  const toggle = document.getElementById('billing-toggle');
+  const toggleContainer = toggle.parentElement;
+  
+  const show = (yearly) => {
+    document.querySelectorAll('[data-price="monthly"]').forEach(el => el.classList.toggle('hidden', yearly));
+    document.querySelectorAll('[data-price="yearly"]').forEach(el => el.classList.toggle('hidden', !yearly));
+  };
+  
+  toggle.addEventListener('change', () => show(toggle.checked));
+  
+  // Handle clicks on the toggle container
+  toggleContainer.addEventListener('click', () => {
+    toggle.checked = !toggle.checked;
+    show(toggle.checked);
+  });
+  
+  show(toggle.checked);
+})();
+</script>
   
   <!-- Counter animation script -->
   <script>
